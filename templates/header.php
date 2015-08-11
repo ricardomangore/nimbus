@@ -7,7 +7,7 @@
         <!--<h1>Start Bootstrap</h1>-->
 		<br>
         <br>
-        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+        <a href="#about" class="btn btn-dark btn-lg">Ver más</a>
     </div>
 </header>
 <?php endif; ?>

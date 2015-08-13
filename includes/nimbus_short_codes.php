@@ -245,3 +245,67 @@ function nimbus_info($atts, $content = ''){
  	$content = do_shortcode($content);
  	return "<div class='row'>$content</div>";
  }
+ 
+ /*
+  * Nimbus Slider
+  * 
+  * Inserta un cuerpo para insertar slides
+  * @param	array	indicators   indica el numero de indicadores e items que tendra el carousel
+  */
+add_shortcode('nbslider' ,'nimbus_slider');
+function nimbus_slider($atts, $content){
+	extract(shortcode_atts(array(
+		'indicators'	=> '0'
+	),$atts));
+	$html_indicator = '';
+	$html_item = '';
+	for($i = 0 ; $i < $indicators; $i++){
+		if($i == 0)
+			$html_indicator .= '<li data-target="#carousel-example-generic" data-slide-to="'. $i .'" class="active"></li>';
+		else
+			$html_indicator .= '<li data-target="#carousel-example-generic" data-slide-to="'. $i .'"></li>';
+	}
+
+	$content = do_shortcode($content);
+	return '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    '. $html_indicator .'
+			  </ol>
+			
+			  <!-- Wrapper for slides -->
+			  <div class="carousel-inner" role="listbox">
+			    '. $content .'
+			  </div>
+			
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>';
+}
+
+/**
+ * Nimbus Slider Item
+ */
+add_shortcode('nbslider-item','nimbus_slider_item');
+function nimbus_slider_item($atts, $content){
+	extract(shortcode_atts(array(
+		'alt'	 => '',
+		'src'    => '',
+		'status' => ''
+	),$atts));
+	$content = do_shortcode($content);
+	return '<div class="item '. $status .'">
+		      <img src="'. $src .'" alt="'. $alt .'">
+		      <div class="carousel-caption">
+		        '. $content .'
+		      </div>
+			</div>';
+}
+

@@ -8,6 +8,8 @@
 			<!--<img src="wp-content/uploads/sites/5/2015/08/logo-intermodalexpress.png" width="30%" height="20%" style="margin-top: 5px;"/>-->
 		</div>
 		<div class="collapse navbar-collapse">
+			<p class="navbar-text" style="font-size: 18px"><a href="tel:+525556831500"><span class="glyphicon glyphicon-earphone"></span> (55) 56 83 15 00</a></p>
+			<p class="navbar-text" style="font-size: 18px"><a href="mailto:info@intermodalexpress.com.mx"><span class="glyphicon glyphicon-envelope"></span>  info@intermodalexpress.com.mx</a></p>
 			<?php
 				wp_nav_menu(array(
 					'theme_location'  => 'nimbus_nav_menu_home',

@@ -7,7 +7,7 @@
         <!--<h1>Start Bootstrap</h1>-->
 		<br>
         <br>
-        <a href="#about" class="btn btn-dark btn-lg">Ver más</a>
+        <a href="#section-21" class="btn btn-dark btn-lg nimbus-scroll" ><span class="glyphicon glyphicon-hand-up"></span></a>
     </div>
 </header>
 <?php endif; ?>

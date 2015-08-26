@@ -2,3 +2,35 @@
     padding: 50px 0px
 }
 
+
+
+.nbnews .carousel .carousel-caption {
+	left:0;
+	right:0;
+	bottom:0;
+	text-align:left;
+	padding:10px;
+	background:rgba(0,0,0,0.6);
+	text-shadow:none;
+}
+.nbnews .carousel .list-group {
+	position:absolute;
+	top:0;
+	right:0;
+}
+.nbnews .carousel .list-group-item {
+	border-radius:0px;
+	cursor:pointer;
+}
+.nbnews .carousel .list-group .active {
+	background-color:#eee;
+	color: #000000;
+}
+@media (min-width: 992px) { 
+	.nbnews .carousel {padding-right:33.3333%;}
+	.nbnews .carousel .carousel-controls {display:none;} 	
+}
+@media (max-width: 991px) { 
+	.carousel-caption p,
+	.nbnews .carousel.list-group {display:none;} 
+}

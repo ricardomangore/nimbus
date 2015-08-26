@@ -255,35 +255,36 @@ function nimbus_info($atts, $content = ''){
 add_shortcode('nbslider' ,'nimbus_slider');
 function nimbus_slider($atts, $content){
 	extract(shortcode_atts(array(
-		'indicators'	=> '0'
+		'indicators'	=> '0',
+		'target'        => ''
 	),$atts));
 	$html_indicator = '';
 	$html_item = '';
 	for($i = 0 ; $i < $indicators; $i++){
 		if($i == 0)
-			$html_indicator .= '<li data-target="#carousel-example-generic" data-slide-to="'. $i .'" class="active"></li>';
+			$html_indicator .= '<li data-target="#'. $target .'" data-slide-to="'. $i .'" class="active"></li>';
 		else
-			$html_indicator .= '<li data-target="#carousel-example-generic" data-slide-to="'. $i .'"></li>';
+			$html_indicator .= '<li data-target="#'. $target .'" data-slide-to="'. $i .'"></li>';
 	}
 
 	$content = do_shortcode($content);
-	return '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	return '<div id="'. $target .'" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
 			    '. $html_indicator .'
 			  </ol>
-			
+			  
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
 			    '. $content .'
 			  </div>
-			
+			  
 			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			  <a class="left carousel-control" href="#'. $target .'" role="button" data-slide="prev">
 			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			    <span class="sr-only">Previous</span>
 			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			  <a class="right carousel-control" href="#'. $target .'" role="button" data-slide="next">
 			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			    <span class="sr-only">Next</span>
 			  </a>
@@ -303,9 +304,100 @@ function nimbus_slider_item($atts, $content){
 	$content = do_shortcode($content);
 	return '<div class="item '. $status .'">
 		      <img src="'. $src .'" alt="'. $alt .'">
-		      <div class="carousel-caption">
-		        '. $content .'
-		      </div>
-			</div>';
+		      <div class="carousel-caption">'. $content .'</div></div>';
 }
+
+/**
+ * Nimbus news
+ */
+ 
+add_shortcode('nbnews', 'nimbus_news');
+function nimbus_news($atts, $content){
+	extract(shortcode_atts(array(),$atts));
+	$content = do_shortcode($content);
+	return '<div class="nbnews">'. $content .'</div>';
+}
+/**
+ * Nimbus News Slider
+ */
+add_shortcode('nbnewslider', 'nimbus_news_slider');
+function nimbus_news_slider($atts, $content){
+	extract(shortcode_atts(array(
+		'target' => ''
+	),$atts));
+	$content = do_shortcode($content);
+	return '<div id="'. $target .'" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+	'. $content .'
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+          <a class="left carousel-control" href="'. $target .'" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="'. $target .'" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div>
+
+    </div><!-- End Carousel -->';
+}
+
+/**
+ * Nimbus nbnewslider-inner
+ */
+ add_shortcode('nbnewslider-inner', 'nimbus_news_slider_inner');
+ function nimbus_news_slider_inner($atts, $content){
+ 	extract(shortcode_atts(array(),$atts));
+	$content = do_shortcode($content);
+	return '<div class="carousel-inner">'. $content .'</div><!-- .carousel-inner -->';
+ }
+
+/**
+ * Nimbus nbnewslider Item
+ */
+add_shortcode('nbnewslider-item', 'nbnewslider_item');
+function nbnewslider_item($atts, $content){
+	extract(shortcode_atts(array(
+		'status' => '',
+		'src'    => ''
+	),$atts));
+	$content = do_shortcode($content);
+	return '<div class="item '. $status.'">
+	          <img src="'. $src .'">
+	           <div class="carousel-caption">
+	            '. $content .'
+	          </div>
+	        </div><!-- End Item -->';
+}
+
+/**
+ * Nimbus nbnewslider-list
+ */
+ 
+ add_shortcode('nbnewslider-list', 'nimbus_news_slider_list');
+ function nimbus_news_slider_list($atts, $content){
+ 	extract(shortcode_atts(array(),$atts));
+	$content = do_shortcode($content);
+	return '<ul class="list-group col-sm-4">'. $content .'</ul>';
+ }
+
+/**
+ * Nimbus nbnewslider-list-item
+ */
+add_shortcode('nbnewslider-list-item','nimbus_news_slider_list_item');
+function nimbus_news_slider_list_item($atts, $content){
+ 	extract(shortcode_atts(array(
+ 		'num' => '',
+ 		'target' => ''
+	),$atts));
+	$content = do_shortcode($content);
+	return '<li data-target="#'. $target .'" data-slide-to="'. $num .'" class="list-group-item active"><h4>'. $content .'</h4></li>';
+}
+
+
+
+
+
+
 

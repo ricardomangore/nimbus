@@ -2,9 +2,9 @@
 	<?php 	
 		$args = array( 
 				'post_type' => 'nimbus_home_section', 
+				'orderby'  => 'meta_value_num', 
 				'order'     => 'ASC',
-				'order_by'  => 'meta_value', 
-				'meta_key'  => '_nimbus_home_section_position_meta_key',
+				'meta_key'  => '_nimbus_home_section_position_meta_key'
 			);
 		
 		$loop = new WP_Query( $args );

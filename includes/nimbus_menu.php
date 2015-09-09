@@ -88,7 +88,7 @@ if(!class_exists('nimbus_walker_nav_menu_home')){
 				$atts['class']			= 'dropdown-toggle';
 				$atts['role']		    = 'button';
 				$atts['aria-haspopup']  = 'true';
-				$atts['aria-expanded']  = 'fasle';
+				$atts['aria-expanded']  = 'false';
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
 			}

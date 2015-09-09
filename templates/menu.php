@@ -3,6 +3,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
+			<!-- Este es un cambio de prueba -->
 			<!--<a class="navbar-brand scroll" href="#top">Intermodalexpress</a>-->
 			<img src="http://intermodalexpress.com.mx/wp-content/uploads/2015/08/nav_intermodal.png" width="80%" height="80%" style="margin-top: 5px;"/>
 			<!--<img src="wp-content/uploads/sites/5/2015/08/logo-intermodalexpress.png" width="30%" height="20%" style="margin-top: 5px;"/>-->

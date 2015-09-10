@@ -379,7 +379,7 @@ function nbnewslider_item($atts, $content){
  function nimbus_news_slider_list($atts, $content){
  	extract(shortcode_atts(array(),$atts));
 	$content = do_shortcode($content);
-	return '<ul class="list-group col-sm-4">'. $content .'</ul>';
+	return '<ul class="list-group col-sm-4 hidden-xs">'. $content .'</ul>';
  }
 
 /**

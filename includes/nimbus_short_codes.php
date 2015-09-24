@@ -13,10 +13,6 @@ $gestordb ->show_errors();
  
 $aeropuertos = $gestordb  -> get_results("SELECT * FROM aeropuerto");
 
-/*$str_options = '';
-foreach($aeropuertos as $aeropuerto){
-	$str_options += "<option value='$aeropuerto->idaeropuerto'>$aeropuerto->code</option>";
-}*/
 $str_options = '';
 foreach($aeropuertos as $aeropuerto){
 	$str_options .= "<option value='$aeropuerto->idaeropuerto'>$aeropuerto->aeropuerto - $aeropuerto->code</option>";
@@ -25,8 +21,7 @@ foreach($aeropuertos as $aeropuerto){
   <div class='steps-container'>
     <ul class='steps'>
       <li data-step='1' data-name='campaign' class='active'><span class='badge'>1</span>Seleccione un Servicio<span class='chevron'></span></li>
-      <li data-step='2'><span class='badge'>2</span>Recipients<span class='chevron'></span></li>
-      <li data-step='3' data-name='template'><span class='badge'>3</span>Template<span class='chevron'></span></li>
+      <li data-step='2'><span class='badge'>2</span>Cotiza<span class='chevron'></span></li>
     </ul>
   </div>
 
@@ -52,7 +47,7 @@ foreach($aeropuertos as $aeropuerto){
     <div class='step-pane sample-pane' data-step='2'>
     	<div class='row component-aereo'>	
     		<div class='col-md-12'>
-    			<form class='form-inline'name='aerial_quote_form' style='height:200px; padding: 50px 0px 50px 0px'>
+    			<form class='form-inline'name='aerial_quote_form' style='height:200px; padding: 50px 0px 50px 0px' method='post' action='#'>
     				<div class='form-group col-md-4'>
     					<label>Destino: </label>
 				      	<select name='opx_aeropuerto' class='opt_aeropuerto' data-live-search='true'>
@@ -77,17 +72,54 @@ foreach($aeropuertos as $aeropuerto){
 			      		<button class='btn btn-success btn-lg btn-block'><i class='fa fa-calculator'></i> Cotizar</button>
 			      	</div>
 		      	</form>
-		      	<form class='form-inline' name='maritime_quote_form'>
-		      		<div class='form-group'>
-		      			<input class='form-control col-xs-3' type='text'>
-		      		</div>
+		      	<form  role='form' class='form-horizontal' name='maritime_quote_form' method='post' action='#' style='padding-top: 50px; height: 250px;'>
+			      		<div class='form-group'>
+			      			<label class='control-label col-sm-1'>Origen: </label>
+			      			<div class='col-sm-3'>
+			      				<input class='form-control' type='text'>
+			      			</div>
+			      			<label class='control-label col-sm-1'>Destino: </label>
+			      			<div class='col-sm-3'>
+			      				<input class='form-control' type='text'>
+			      			</div>	
+			      			<label class='col-sm-2'>
+			      				<input type='radio' name='opx_tipo_carga' value='contenerizada'> Contenedor
+			      			</label>
+			      			<label lass='col-sm-2'>
+			      				<input type='radio' name='opx_tipo_carga' value='consolidada'> Consolidada
+			      			</label>			      					      			
+			      		</div>
+			      		
+			      		<div class='form-group carga_contenerizada'>
+			      			<label class='control-label col-sm-2'>Tipo de Contenedor: </label>
+			      			<div class='col-sm-3'>
+			      				<input type='text' class='form-control' name='opx_tipo_contenedor'>
+			      			</div>
+			      		</div>
+				      	<div class='form-group carga_consolidada'>
+				      		<label class='control-label col-sm-1'>Peso: </label>
+				      		<div class='col-sm-3'>
+					      		<div class='input-group'>
+						      		<input type='text' name='opx_peso' class='form-control'>
+						      		<div class='input-group-addon'>Kg</div>
+					      		</div>
+				      		</div>
+				      		<label class='control-label col-sm-1'>Volumen: </label>
+				      		<div class='col-sm-3'>
+					      		<div class='input-group'>
+					      			<input type='text' name='opx_volumen' class='form-control'>
+					      			<div class='input-group-addon'>m3</div>
+					      		</div>
+							</div>					      	
+				      	</div>
+				      	<div class='form-group'>
+				      		<div class='col-sm-2 col-sm-offset-10'>
+				      			<button class='btn btn-success btn-lg btn-block'><i class='fa fa-calculator'></i> Cotizar</button>
+				      		</div>
+				      	</div>
 		      	</form>
 		    </div>
       	</div>
-    </div>
-    <div class='step-pane sample-pane bg-danger alert' data-step='3'>
-      <h4>Design Template</h4>
-      <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jÃ­cama salsify. </p>
     </div>
   </div>
 </div>";

@@ -3,10 +3,14 @@
 	$(document).ready(function() {
 		$maritimeQuoteForm = $('[name=maritime_quote_form]');
 		$aerialQuoteForm   = $('[name=aerial_quote_form]');
+		$cargaContenerizada = $('.carga_contenerizada');
+		$cargaConsolidada = $('.carga_consolidada');
 		$opxWizard = $('#opx_wizard').wizard();
 	  	$aeropuerto_selectpicker = $('.opt_aeropuerto').selectpicker();
 	  	$btnOpxServicioMaritimo = $('.opx_btn_maritimo');
 	  	$btnOpxServicioAereo    = $('.opx_btn_aereo');
+	  	$cargaContenerizada.hide();
+	  	$cargaConsolidada.hide();
 	  	
 	  	$btnOpxServicioMaritimo.click(function(event){
 		  	$aerialQuoteForm.hide();
@@ -20,20 +24,18 @@
 		  	$opxWizard.wizard('next');
 	  	});
 	  	
-	  	$btnRadioTipoServicio = $('[name=opx_tipo_servicio]');
-	  	$btnRadioTipoServicio.click(function(event){
+	  	$btnRadioTipoCarga = $('[name=opx_tipo_carga]');
+	  	$btnRadioTipoCarga.click(function(event){
 	  		var tipo = $(this).val();
 	  		switch( tipo ){
-	  			case 'maritimo' : {
-	  								$aerialQuoteForm.hide();
-	  								$maritimeQuoteForm.show();
-	  								$opxWizard.wizard('next');
+	  			case 'consolidada' : {
+									$cargaConsolidada.show();
+									$cargaContenerizada.hide();
 	  								break;
 	  			}
-	  			case 'aereo'	: {
-	  								$aerialQuoteForm.show();
-	  								$maritimeQuoteForm.hide();
-	  								$opxWizard.wizard('next');
+	  			case 'contenerizada'	: {
+									$cargaContenerizada.show();
+									$cargaConsolidada.hide();
 	  								break;
 	  			}
 	  		}

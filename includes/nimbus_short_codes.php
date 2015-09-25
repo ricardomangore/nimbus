@@ -17,7 +17,7 @@ $str_options = '';
 foreach($aeropuertos as $aeropuerto){
 	$str_options .= "<option value='$aeropuerto->idaeropuerto'>$aeropuerto->aeropuerto - $aeropuerto->code</option>";
 }
-  return 	"<div class='wizard'  id='opx_wizard'>
+  return 	"<div class='wizard fuelux'  id='opx_wizard'>
   <div class='steps-container'>
     <ul class='steps'>
       <li data-step='1' data-name='campaign' class='active'><span class='badge'>1</span>Seleccione un Servicio<span class='chevron'></span></li>
@@ -47,7 +47,8 @@ foreach($aeropuertos as $aeropuerto){
     <div class='step-pane sample-pane' data-step='2'>
     	<div class='row component-aereo'>	
     		<div class='col-md-12'>
-    			<form class='form-inline'name='aerial_quote_form' style='height:200px; padding: 50px 0px 50px 0px' method='post' action='#'>
+    			<form class='form-inline'name='aerial_quote_form' style='height:200px; padding: 50px 0px 50px 0px' method='get' action='http://localhost/wordpress/wp-admin/admin-post.php '>
+    				<input type='hidden' name='action' value='opx_quote'>
     				<div class='form-group col-md-4'>
     					<label>Destino: </label>
 				      	<select name='opx_aeropuerto' class='opt_aeropuerto' data-live-search='true'>

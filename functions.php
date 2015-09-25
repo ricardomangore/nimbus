@@ -187,6 +187,23 @@ function nimbus_theme_page(){
 	echo "Página de configuración del tema";
 }
 
+/**
+ * Hook para procesar el formulario de cotizaciones
+ */
+if(!function_exists('processes_quote_form')){
+ 	function processes_quote_form(){
+ 		ob_start();
+		$template = locate_template("/templates/quote_result.php");
+		load_template($template);
+		$template_content = ob_get_contents();
+		ob_end_clean();
+		echo $template_content;
+    	die();
+ 	}
+	add_action('admin_post_opx_quote','processes_quote_form');
+	add_action('admin_post_nopriv_opx_quote', 'processes_quote_form');
+}
+ 
 
 
 

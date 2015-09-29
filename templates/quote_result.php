@@ -10,7 +10,6 @@
         	get_template_part('templates/page_quote_result');
         ?>
 		
-		
 		<?php 	
 		$args = array( 
 				'post_type' => 'footer_section', 

@@ -9,14 +9,27 @@ function nimbus_cotizador(){
 	
 	$gestordb = new wpdb('root', '', 'opusx', 'localhost');
  
-$gestordb ->show_errors();
- 
-$aeropuertos = $gestordb  -> get_results("SELECT * FROM aeropuerto");
-
-$str_options = '';
-foreach($aeropuertos as $aeropuerto){
-	$str_options .= "<option value='$aeropuerto->idaeropuerto'>$aeropuerto->aeropuerto - $aeropuerto->code</option>";
-}
+	 
+	$aeropuertos = $gestordb->get_results("SELECT * FROM aeropuerto");
+	
+	$str_aereo_options = '';
+	foreach($aeropuertos as $aeropuerto){
+		$str_aereo_options .= "<option value='$aeropuerto->idaeropuerto'>$aeropuerto->aeropuerto - $aeropuerto->code</option>";
+	}
+	
+	$puertos = $gestordb->get_results("SELECT * FROM puerto");
+	$str_maritimo_options = '';
+	foreach($puertos as $puerto){
+		$str_maritimo_options .= "<option value='$puertos->idpuerto'>$puerto->puerto - $puerto->locode</option>";
+	}	
+	
+	
+	$contenedores = $gestordb->get_results("SELECT * FROM contenedor");
+	$str_contenedor_options = '';
+	foreach($contenedores as $contenedor){
+		$str_contenedor_options .= "<option value='$contenedor->idcontenedor'>$contenedor->tipo - $contenedor->pies</option>";
+	}
+	
   return 	"<div class='wizard fuelux'  id='opx_wizard'>
   <div class='steps-container'>
     <ul class='steps'>
@@ -47,12 +60,12 @@ foreach($aeropuertos as $aeropuerto){
     <div class='step-pane sample-pane' data-step='2'>
     	<div class='row component-aereo'>	
     		<div class='col-md-12'>
-    			<form class='form-inline'name='aerial_quote_form' style='height:200px; padding: 50px 0px 50px 0px' method='get' action='http://localhost/wordpress/wp-admin/admin-post.php '>
-    				<input type='hidden' name='action' value='opx_quote'>
+    			<form class='form-inline'name='aerial_quote_form' style='height:200px; padding: 50px 0px 50px 0px' method='get' action='http://localhost/wordpress/wp-admin/admin-post.php'>
+    				<input type='hidden' name='action' value='opx_quote_aereo'>
     				<div class='form-group col-md-4'>
     					<label>Destino: </label>
 				      	<select name='opx_aeropuerto' class='opt_aeropuerto' data-live-search='true'>
-				      		$str_options
+				      		$str_aereo_options
 				      	</select>
 			      	</div>
 			      	<div class='form-group col-md-4'>
@@ -73,15 +86,20 @@ foreach($aeropuertos as $aeropuerto){
 			      		<button class='btn btn-success btn-lg btn-block'><i class='fa fa-calculator'></i> Cotizar</button>
 			      	</div>
 		      	</form>
-		      	<form  role='form' class='form-horizontal' name='maritime_quote_form' method='post' action='#' style='padding-top: 50px; height: 250px;'>
+		      	<form  role='form' class='form-horizontal' name='maritime_quote_form' method='get' action='http://localhost/wordpress/wp-admin/admin-post.php' style='padding-top: 50px; height: 250px;'>
+		      			<input type='hidden' name='action' value='opx_quote_maritimo'>
 			      		<div class='form-group'>
 			      			<label class='control-label col-sm-1'>Origen: </label>
 			      			<div class='col-sm-3'>
-			      				<input class='form-control' type='text'>
+			      				<select name='opx_origen' class='opt_aeropuerto' data-live-search='true'>
+						      		$str_maritimo_options
+						      	</select>
 			      			</div>
 			      			<label class='control-label col-sm-1'>Destino: </label>
 			      			<div class='col-sm-3'>
-			      				<input class='form-control' type='text'>
+			      				<select name='opx_destino' class='opt_aeropuerto' data-live-search='true'>
+						      		$str_maritimo_options
+						      	</select>
 			      			</div>	
 			      			<label class='col-sm-2'>
 			      				<input type='radio' name='opx_tipo_carga' value='contenerizada'> Contenedor
@@ -94,7 +112,9 @@ foreach($aeropuertos as $aeropuerto){
 			      		<div class='form-group carga_contenerizada'>
 			      			<label class='control-label col-sm-2'>Tipo de Contenedor: </label>
 			      			<div class='col-sm-3'>
-			      				<input type='text' class='form-control' name='opx_tipo_contenedor'>
+			      				<select name='opx_contenedor' class='opt_aeropuerto' data-live-search='true'>
+						      		$str_contenedor_options
+						      	</select>
 			      			</div>
 			      		</div>
 				      	<div class='form-group carga_consolidada'>

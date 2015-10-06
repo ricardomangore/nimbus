@@ -7,7 +7,7 @@
         <div style=" height: 50px"></div>
         <?php
         	set_query_var('test', 'Titulo de TEST'); 
-        	get_template_part('templates/page_quote_result');
+        	get_template_part('templates/page_quote_result_maritimo');
         ?>
 		
 		<?php 	

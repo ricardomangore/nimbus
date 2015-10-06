@@ -44,10 +44,6 @@
 			'aod' => $result_aod[0]
 		));
 	}
-	
-	var_dump($result_aod);
-	echo "<br>";
-	var_dump($result_aol);
 ?>
 <div class="section">
 	<div class="container">

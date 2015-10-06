@@ -188,20 +188,38 @@ function nimbus_theme_page(){
 }
 
 /**
- * Hook para procesar el formulario de cotizaciones
+ * Hook para procesar el formulario de cotizaciones Aéreas
  */
-if(!function_exists('processes_quote_form')){
- 	function processes_quote_form(){
+if(!function_exists('processes_quote_form_aereo')){
+ 	function processes_quote_form_aereo(){
  		ob_start();
-		$template = locate_template("/templates/quote_result.php");
+		$template = locate_template("/templates/quote_result_aereo.php");
 		load_template($template);
 		$template_content = ob_get_contents();
 		ob_end_clean();
 		echo $template_content;
     	die();
  	}
-	add_action('admin_post_opx_quote','processes_quote_form');
-	add_action('admin_post_nopriv_opx_quote', 'processes_quote_form');
+	add_action('admin_post_opx_quote_aereo','processes_quote_form_aereo');
+	add_action('admin_post_nopriv_opx_quote_aereo', 'processes_quote_form_aereo');
+}
+
+
+/**
+ * Hook para procesar el formulario de cotizaciones Marítimas
+ */
+if(!function_exists('processes_quote_form_maritimo')){
+ 	function processes_quote_form_maritimo(){
+ 		ob_start();
+		$template = locate_template("/templates/quote_result_maritimo.php");
+		load_template($template);
+		$template_content = ob_get_contents();
+		ob_end_clean();
+		echo $template_content;
+    	die();
+ 	}
+	add_action('admin_post_opx_quote_maritimo','processes_quote_form_maritimo');
+	add_action('admin_post_nopriv_opx_quote_maritimo', 'processes_quote_form_maritimo');
 }
  
 

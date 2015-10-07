@@ -1,12 +1,14 @@
 <?php
 
-
 define('NIMBUS_ROOT', get_template_directory_uri());
 
 
 include_once ('includes/nimbus_menu.php');
 include_once ('includes/nimbus_short_codes.php');
 include_once ('includes/nimbus_meta_boxes.php');
+include_once ('includes/quote_db.php');
+
+
 
 
 //Elimina la inserción de parrafor automaticamente

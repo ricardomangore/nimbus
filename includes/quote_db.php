@@ -1,6 +1,6 @@
 <?php
 //incluye wp-load para tener instancias de los objetos Wordpress utilizados
-include_once('wp-load.php');
+
 
 class quote_db extends wpdb{
 	

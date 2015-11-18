@@ -1,16 +1,16 @@
 @font-face {
-	font-family: 'iex';
-	src:url('fonts/iex.eot?-9ea35d');
-	src:url('fonts/iex.eot?#iefix-9ea35d') format('embedded-opentype'),
-		url('fonts/iex.ttf?-9ea35d') format('truetype'),
-		url('fonts/iex.woff?-9ea35d') format('woff'),
-		url('fonts/iex.svg?-9ea35d#iex') format('svg');
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?gderrh');
+	src:url('fonts/icomoon.eot?gderrh#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?gderrh') format('truetype'),
+		url('fonts/icomoon.woff?gderrh') format('woff'),
+		url('fonts/icomoon.svg?gderrh#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'iex';
+	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -23,28 +23,134 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-container:before {
-	content: "\e600";
+.icon-adaptab-almacen:before {
+	content: "\e900";
 }
-.icon-storage:before {
-	content: "\e601";
+.icon-adaptabilidad:before {
+	content: "\e901";
 }
-.icon-itin_aero:before {
-	content: "\e602";
+.icon-beneficios-aereos:before {
+	content: "\e902";
 }
-.icon-itin_maritime:before {
-	content: "\e603";
+.icon-beneficios-terrestres:before {
+	content: "\e903";
 }
-.icon-itin_inland:before {
-	content: "\e604";
+.icon-cabina-ancha:before {
+	content: "\e904";
 }
-.icon-routes:before {
-	content: "\e605";
+.icon-cabina-angosta:before {
+	content: "\e905";
 }
-.icon-insurance:before {
-	content: "\e606";
+.icon-cobert-amplia:before {
+	content: "\e906";
 }
-.icon-vesel:before {
-	content: "\e607";
+.icon-contenedores:before {
+	content: "\e907";
+}
+.icon-embarques:before {
+	content: "\e908";
+}
+.icon-equipo-remolques:before {
+	content: "\e909";
+}
+.icon-experiencia:before {
+	content: "\e90a";
+}
+.icon-Iconstarifas:before {
+	content: "\e90b";
+}
+.icon-import-export:before {
+	content: "\e90c";
+}
+.icon-itin-marinos .path1:before {
+	content: "\e90d";
+	color: rgb(68, 68, 68);
+}
+.icon-itin-marinos .path2:before {
+	content: "\e90e";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos .path3:before {
+	content: "\e90f";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos .path4:before {
+	content: "\e910";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos .path5:before {
+	content: "\e911";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos .path6:before {
+	content: "\e912";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos .path7:before {
+	content: "\e913";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos2 .path1:before {
+	content: "\e914";
+	color: rgb(69, 69, 69);
+}
+.icon-itin-marinos2 .path2:before {
+	content: "\e915";
+	margin-left: -1em;
+	color: rgb(69, 69, 69);
+}
+.icon-itin-marinos2 .path3:before {
+	content: "\e916";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos2 .path4:before {
+	content: "\e917";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos2 .path5:before {
+	content: "\e918";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos2 .path6:before {
+	content: "\e919";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos2 .path7:before {
+	content: "\e91a";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-itin-marinos2 .path8:before {
+	content: "\e91b";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-seguridad:before {
+	content: "\e91c";
+}
+.icon-serv-adicionales:before {
+	content: "\e91d";
+}
+.icon-serv-aduanales:before {
+	content: "\e91e";
+}
+.icon-serv-consolidacion:before {
+	content: "\e91f";
+}
+.icon-valor-agregado:before {
+	content: "\e920";
+}
+.icon-ventajas:before {
+	content: "\e921";
 }
 

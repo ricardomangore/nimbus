@@ -1,12 +1,14 @@
 <?php
 
-
 define('NIMBUS_ROOT', get_template_directory_uri());
-
-
 include_once ('includes/nimbus_menu.php');
 include_once ('includes/nimbus_short_codes.php');
 include_once ('includes/nimbus_meta_boxes.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
+include_once ('includes/quote_db.php');
+
+
+
 
 
 //Elimina la inserción de parrafor automaticamente
@@ -22,8 +24,9 @@ if(!function_exists('nimbus_enqueue_style')){
 		wp_enqueue_style('stylish-portolio',NIMBUS_ROOT.'/css/stylish-portfolio.css',false,null);	
 		wp_enqueue_style('fuelux_css',NIMBUS_ROOT.'/js/plugins/fuelux/css/fuelux.css',false,null);
 		wp_enqueue_style('nimbus-style',NIMBUS_ROOT.'/css/nimbus-style.css',false,null);
-		wp_enqueue_style('font-awesome',NIMBUS_ROOT.'/font-awesome/css/font-awesome.min.css',false,null);
+		wp_enqueue_style('font-awesome',NIMBUS_ROOT.'/font-awesome/css/font-awesome.css',false,null);
 		wp_enqueue_style('style-icon',NIMBUS_ROOT.'/iconmoon/style.css',false,null);
+		wp_enqueue_style('bootstrap-select_css',NIMBUS_ROOT.'/css/bootstrap-select.min.css',false,null);
 		wp_enqueue_style('fonts-googleapis','http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic',false,null);	
 		//wp_enqueue_style('slidorion-css',NIMBUS_ROOT.'/js/plugins/slidorion/css/slidorion.css',false,null);
 		//wp_enqueue_style('slidorion-style-css',NIMBUS_ROOT.'/js/plugins/slidorion/css/slidorion-style.css',false,null);
@@ -43,6 +46,8 @@ if(!function_exists('nimbus_enqueue_scripts')){
 		wp_enqueue_script('fuelux-js',NIMBUS_ROOT.'/js/plugins/fuelux/js/fuelux.min.js');
 		wp_enqueue_script('slidorion-js',NIMBUS_ROOT.'/js/plugins/slidorion/js/jquery.slidorion.js');
 		wp_enqueue_script('jquery-easing-js',NIMBUS_ROOT.'/js/plugins/slidorion/js/jquery.easing.js');
+		wp_enqueue_script('nimbus-cot-js',NIMBUS_ROOT.'/js/libraries/nimbus-cot.js');
+		wp_enqueue_script('bootstrap-select-js',NIMBUS_ROOT.'/js/bootstrap-select.min.js');
 	}
 	add_action('wp_enqueue_scripts', 'nimbus_enqueue_scripts');
 }
@@ -184,6 +189,41 @@ function nimbus_theme_page(){
 	echo "Página de configuración del tema";
 }
 
+/**
+ * Hook para procesar el formulario de cotizaciones Aéreas
+ */
+if(!function_exists('processes_quote_form_aereo')){
+ 	function processes_quote_form_aereo(){
+ 		ob_start();
+		$template = locate_template("/templates/quote_result_aereo.php");
+		load_template($template);
+		$template_content = ob_get_contents();
+		ob_end_clean();
+		echo $template_content;
+    	die();
+ 	}
+	add_action('admin_post_opx_quote_aereo','processes_quote_form_aereo');
+	add_action('admin_post_nopriv_opx_quote_aereo', 'processes_quote_form_aereo');
+}
+
+
+/**
+ * Hook para procesar el formulario de cotizaciones Marítimas
+ */
+if(!function_exists('processes_quote_form_maritimo')){
+ 	function processes_quote_form_maritimo(){
+ 		ob_start();
+		$template = locate_template("/templates/quote_result_maritimo.php");
+		load_template($template);
+		$template_content = ob_get_contents();
+		ob_end_clean();
+		echo $template_content;
+    	die();
+ 	}
+	add_action('admin_post_opx_quote_maritimo','processes_quote_form_maritimo');
+	add_action('admin_post_nopriv_opx_quote_maritimo', 'processes_quote_form_maritimo');
+}
+ 
 
 
 

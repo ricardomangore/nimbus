@@ -72,6 +72,61 @@ function nimbus_cotizador($atts , $content ){
  }
 
 /**
+ * Popup Window Short Code
+ * 
+ * Crea un popup al cargase la página
+ * 
+ * @param array   $atts       Arreglo de atributos para el  shortcode
+ * 							  'title'        Título de la ventana modal
+ * 							  'size'         Tamaño de la ventana modal
+ *                  						 valores admitidos: lg, sm, '' (vacio) para medium
+ * 
+ * 
+ * @param string  $content    Contenido del cuerpo del shortcode
+ * 
+ */
+ add_shortcode('nbpopup', 'nimbus_popup');
+ function nimbus_popup($atts = null, $content = ''){
+ 	
+	
+	if(isset($atts['btntype']))
+		$atts['btntype'] = 'btn-' . $atts['btntype'];
+	if(isset($atts['btnsize']))
+		$atts['btnsize'] = 'btn-' . $atts['btnsize'];
+	if(isset($atts['size']))
+		$atts['size'] = 'modal-' . $atts['size'];		
+
+	extract( shortcode_atts( array(
+				'title'      => 'Title',
+				'size'       => '' //default
+			), $atts ) );		
+	$content = do_shortcode($content);
+ 	
+	return '
+			<div class="modal fade nbpopup" id="popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog '. $size .'" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">'. $title .'</h4>
+			      </div>
+			      <div class="modal-body">'. $content .'</div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>';
+ }
+
+
+
+
+
+
+
+
+/**
  * Contextual Background
  *  
  * Proporciona un fondo de cierto colo al texto

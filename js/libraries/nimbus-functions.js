@@ -1,6 +1,8 @@
 (function($){
 
 $(document).ready(function(){
+
+    $(".nbpopup").modal("show");
     
 	var clickEvent = false;
 	$('.nbnews .carousel').carousel({
